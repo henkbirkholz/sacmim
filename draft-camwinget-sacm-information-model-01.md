@@ -127,7 +127,7 @@ The primary tasks that this information model supports (on data,control and mana
 * SACM Component Authorization
 * SACM Component Registration
 
-## Requirements notation
+# Requirements notation
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and

@@ -65,28 +65,28 @@ Internet-Draft           SACM Information Model                 May 2016
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-     1.1.  Requirements notation . . . . . . . . . . . . . . . . . .   3
-   2.  Information Elements  . . . . . . . . . . . . . . . . . . . .   3
-     2.1.  Context of Information Elements . . . . . . . . . . . . .   4
-     2.2.  Extensibility of Information Elements . . . . . . . . . .   4
-   3.  Structure of Information Elements . . . . . . . . . . . . . .   4
-     3.1.  SACM Content Elements . . . . . . . . . . . . . . . . . .   6
-     3.2.  SACM Statements . . . . . . . . . . . . . . . . . . . . .   6
-     3.3.  Relationship Types  . . . . . . . . . . . . . . . . . . .   8
-     3.4.  Events  . . . . . . . . . . . . . . . . . . . . . . . . .   9
-   4.  Information Element Vocabulary  . . . . . . . . . . . . . . .  10
-     4.1.  Vocabulary of Categories  . . . . . . . . . . . . . . . .  11
-     4.2.  Vocabulary of Atomic Information Elements . . . . . . . .  11
-     4.3.  Vocabulary of Composite Information Elements  . . . . . .  24
-   5.  Example composition of SACM statements  . . . . . . . . . . .  33
-   6.  IANA considerations . . . . . . . . . . . . . . . . . . . . .  35
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  35
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  35
-   9.  Change Log  . . . . . . . . . . . . . . . . . . . . . . . . .  35
-   10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  35
-   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  35
-     11.1.  Normative References . . . . . . . . . . . . . . . . . .  35
-     11.2.  Informative References . . . . . . . . . . . . . . . . .  36
+   2.  Requirements notation . . . . . . . . . . . . . . . . . . . .   3
+   3.  Information Elements  . . . . . . . . . . . . . . . . . . . .   3
+     3.1.  Context of Information Elements . . . . . . . . . . . . .   4
+     3.2.  Extensibility of Information Elements . . . . . . . . . .   4
+   4.  Structure of Information Elements . . . . . . . . . . . . . .   4
+     4.1.  SACM Content Elements . . . . . . . . . . . . . . . . . .   6
+     4.2.  SACM Statements . . . . . . . . . . . . . . . . . . . . .   6
+     4.3.  Relationship Types  . . . . . . . . . . . . . . . . . . .   8
+     4.4.  Events  . . . . . . . . . . . . . . . . . . . . . . . . .   9
+   5.  Information Element Vocabulary  . . . . . . . . . . . . . . .  10
+     5.1.  Vocabulary of Categories  . . . . . . . . . . . . . . . .  11
+     5.2.  Vocabulary of Atomic Information Elements . . . . . . . .  11
+     5.3.  Vocabulary of Composite Information Elements  . . . . . .  24
+   6.  Example composition of SACM statements  . . . . . . . . . . .  33
+   7.  IANA considerations . . . . . . . . . . . . . . . . . . . . .  35
+   8.  Security Considerations . . . . . . . . . . . . . . . . . . .  35
+   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  35
+   10. Change Log  . . . . . . . . . . . . . . . . . . . . . . . . .  35
+   11. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  35
+   12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  35
+     12.1.  Normative References . . . . . . . . . . . . . . . . . .  35
+     12.2.  Informative References . . . . . . . . . . . . . . . . .  36
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  36
 
 1.  Introduction
@@ -149,14 +149,14 @@ Internet-Draft           SACM Information Model                 May 2016
 
    o  SACM Component Registration
 
-1.1.  Requirements notation
+2.  Requirements notation
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in RFC
    2119, BCP 14 [RFC2119].
 
-2.  Information Elements
+3.  Information Elements
 
    *to be inserted between section 2 and section 3*
 
@@ -176,7 +176,7 @@ Internet-Draft           SACM Information Model                 May 2016
    The Integer Index of the IANA SMI number tables can be used by SACM
    data models.
 
-2.1.  Context of Information Elements
+3.1.  Context of Information Elements
 
    The IE in this information model represent information related to the
    following areas (based on the use cases described in [RFC7632]):
@@ -191,7 +191,7 @@ Internet-Draft           SACM Information Model                 May 2016
 
    o  Vulnerability Management
 
-2.2.  Extensibility of Information Elements
+3.2.  Extensibility of Information Elements
 
    A SACM data model based on this information model MAY include
    additional information elements that are not defined here.  The
@@ -205,7 +205,7 @@ Internet-Draft           SACM Information Model                 May 2016
    therefore, for example, MAY be an IANA enterprise number, a (partial)
    name space URI or an organization name abbreviation.
 
-3.  Structure of Information Elements
+4.  Structure of Information Elements
 
    *replaces beginning text of Information Model Framework and 3.1-3.4,
    will move syntax 3.1.1 and 3.2.1 to aggregated sub-section, will also
@@ -292,7 +292,7 @@ Internet-Draft           SACM Information Model                 May 2016
    provided by a SACM component in order to be consumed by another SACM
    component uses these top-level subjects.
 
-3.1.  SACM Content Elements
+4.1.  SACM Content Elements
 
    Every piece of information that is provided by a SACM component is
    always associated with a set of metadata, for example, the timestamp
@@ -319,7 +319,7 @@ Internet-Draft           SACM Information Model                 May 2016
    )
 
 
-3.2.  SACM Statements
+4.2.  SACM Statements
 
    SACM Statements
 
@@ -431,7 +431,7 @@ Internet-Draft           SACM Information Model                 May 2016
    )
 
 
-3.3.  Relationship Types
+4.3.  Relationship Types
 
    An IE can be associated with another IE, e.g. a user-name attribute
    can be associated with a content-authorization subject.  These
@@ -492,7 +492,7 @@ content-element = (
 )
 
 
-3.4.  Events
+4.4.  Events
 
    Event subjects provide a structure to represent the change of IE
    values that was detected by a collection task at a specific point of
@@ -543,7 +543,7 @@ Internet-Draft           SACM Information Model                 May 2016
    )
 
 
-4.  Information Element Vocabulary
+5.  Information Element Vocabulary
 
    *to be inserted in section 5 as candidates*
 
@@ -566,7 +566,7 @@ Internet-Draft           SACM Information Model                 May 2016
    interface types defined by the IANA registry or the relationship
    types).
 
-4.1.  Vocabulary of Categories
+5.1.  Vocabulary of Categories
 
    Categories are special Information Elements that enable to refer to
    multiple types of IE via just one name.  Therefore, they are similar
@@ -603,7 +603,7 @@ Internet-Draft           SACM Information Model                 May 2016
 
    software-label: (work-in-progress)
 
-4.2.  Vocabulary of Atomic Information Elements
+5.2.  Vocabulary of Atomic Information Elements
 
    The content of every Atomic Information Element is expressed in a
    single value.  If an alternative representation via a Composite
@@ -1316,7 +1316,7 @@ Internet-Draft           SACM Information Model                 May 2016
 
       References: [SCAP-AI]
 
-4.3.  Vocabulary of Composite Information Elements
+5.3.  Vocabulary of Composite Information Elements
 
    The content of every Composite Information Element is expressed by
    the mandatory and optional IE it can be composed of.  The components
@@ -1798,7 +1798,7 @@ Internet-Draft           SACM Information Model                 May 2016
 
       user-directory (?)
 
-5.  Example composition of SACM statements
+6.  Example composition of SACM statements
 
    This section illustrates examples how SACM statements are composed of
    content elements, how relationship CIE can be used in content
@@ -1928,23 +1928,23 @@ Internet-Draft           SACM Information Model                 May 2016
            privilege-value: false
 
 
-6.  IANA considerations
+7.  IANA considerations
 
    This document includes requests to IANA.
 
-7.  Security Considerations
+8.  Security Considerations
 
-8.  Acknowledgements
+9.  Acknowledgements
 
-9.  Change Log
+10.  Change Log
 
    First version -00
 
-10.  Contributors
+11.  Contributors
 
-11.  References
+12.  References
 
-11.1.  Normative References
+12.1.  Normative References
 
    [ARF]      Corporation., T., "Assessment Results Format", 2010.
 
@@ -1992,7 +1992,7 @@ Internet-Draft           SACM Information Model                 May 2016
               2: Software identification tag'", ISO/IEC 19770-2:2015,
               October 2015.
 
-11.2.  Informative References
+12.2.  Informative References
 
    [I-D.ietf-sacm-requirements]
               Cam-Winget, N. and L. Lorenzin, "Security Automation and

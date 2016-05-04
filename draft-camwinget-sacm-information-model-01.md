@@ -1074,10 +1074,10 @@ The content of every Composite Information Element is expressed by the mandatory
 * (\*): zero to unbounded occurrences
 * (\+): one to unbounded occurrences
 * (?): zero or one occurrence
-* (n*m): between n and m occurrences
+* (n,m): between n and m occurrences
 * no cardinality: one occurrence
 
-If there is no cardinality highlighted or the cardinality (\+) or (n\*m) is used, including this IE in the CIE is mandatory. In contrast, optional IE are expressed via the cardinality (?) or (\*).
+If there is no cardinality highlighted or the cardinality (\+) or (n,m) is used, including this IE in the CIE is mandatory. In contrast, optional IE are expressed via the cardinality (?) or (\*).
 An CIE can prescribe a strict sequence to the component IE it contains. This in indicated by an (s).
 CIE that are prefixed with "c." have a simplified AIE counterpart that is prefixed with "a."
 

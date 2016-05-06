@@ -41,55 +41,7 @@ normative:
   RFC3635:
   RFC1573:
   # I-D.ietf-sacm-architecture-13:
-  SWID:
-    title: >
-      Information technology - Software asset management - Part 2: Software identification tag'
-    date: 2015-10-01
-    seriesinfo:
-      ISO/IEC: 19770-2:2015
-  IFMAP:
-    title: >
-      TCG Trusted Network Communications - TNC IF-MAP Metadata for Network Security Specification Version 1.1r9
-    date: 2012-05-07
-  ARF:
-    title: >
-      Assessment Results Format
-    author:
-      name: The MITRE Corporation.
-    date: 2010
-  SCAP-AI:
-    title: >
-      Specification for Asset Identification 1.1
-    author:
-    - ins: J. Wunder
-      name: John Wunder
-    - ins: A. Halbardier
-      name: Adam Halbardier
-    - ins: D. Waltermire
-      name: David Waltermire
-    date: 2011
-    seriesinfo:
-      NIST Interagency Report 7693 
-  PXGRID:
-    title: An Actionable Threat Intelligence system using a Publish-Subscribe communications
-      model
-    author:
-    - ins: S. Appala
-      name: Syam Appala
-    - ins: N. Cam-Winget
-      name: Nancy Cam-Winget
-    - ins: D. McGrew
-      name: David McGrew
-    - ins: J. Verma
-      name: Jyoti Verma
-    seriesinfo:
-      ACM: Proceedings of the 2nd ACM Workshop on Information Sharing and Collaborative
-        Security
-      page: 61-70
-      DOI: 10.1145/2808128.2808131
-      ISBN: 978-1-4503-3822-6
-    date: 2016
- 
+  
 informative:
   RFC7632:
   I-D.ietf-sacm-requirements: sacm-req
@@ -106,15 +58,15 @@ This document defines the information elements that are transported between SACM
 
 The SACM Information Model (IM) serves multiple purposes:
 
-* to ensure interoperability between SACM data models that are used as transport encoding,
-* to provide a standardized set on information elements - the SACM Vocabulary - to enable the exchange of content vital to automated security posture assessment, and
+* to ensure interoperability between SACM data models that are used as transport encodings,
+* to provide a standardized set of information elements - the SACM Vocabulary - to enable the exchange of content vital to automated security posture assessment, and
 * to enable secure information sharing in a scalable and extensible fashion in order to support the tasks conducted by SACM components.
 
 A complete set of requirements imposed on the IM can be found in {{-sacm-req}}. The SACM IM is intended to be used for standardized data exchange between SACM components (data in motion). Nevertheless, the information elements (IE) and their relationships defined in this document can be leveraged to create and align corresponding data models for data at rest.
 
-The information model expresses, for example, target endpoint (TE) attributes, guidance or evaluation results.  The corresponding information elements are consumed and produced by SACM components as they carry out tasks.
+The information model expresses, for example, target endpoint (TE) attributes, guidance and evaluation results.  The corresponding information elements are consumed and produced by SACM components as they carry out tasks.
 
-The primary tasks that this information model supports (on data,control and management plane) are:
+The primary tasks that this information model supports (on data,control, and management plane) are:
 
 * TE Discovery
 * TE Characterization
@@ -142,7 +94,7 @@ The Information Elements (IE) defined in this document comprise the building blo
 
 ## Context of Information Elements
 
-The IE in this information model represent information related to the following areas (based on the use cases described in {{RFC7632}}):
+The IEs in this information model represent information related to the following areas (based on the use cases described in {{RFC7632}}):
 
 * Endpoint Management
 * Software Inventory Management
@@ -152,7 +104,7 @@ The IE in this information model represent information related to the following 
 
 ## Extensibility of Information Elements
 
-A SACM data model based on this information model MAY include additional information elements that are not defined here. The labels of additional information elements included in different SACM data models MUST NOT conflict with the labels of the information elements defined by this information model, and the names of additional information elements MUST NOT conflict with each other or across multiple data models.  In order to avoid naming conflicts, the labels of additional IEs SHOULD be prefixed to avoid collision across extensions.  The prefix MUST include an organizational identifier and therefore, for example, MAY be an IANA enterprise number, a (partial) name space URI or an organization name abbreviation.
+A SACM data model based on this information model MAY include additional information elements that are not defined here. The labels of additional information elements included in different SACM data models MUST NOT conflict with the labels of the information elements defined by this information model, and the names of additional information elements MUST NOT conflict with each other or across multiple data models.  In order to avoid naming conflicts, the labels of additional IEs SHOULD be prefixed to avoid collision across extensions.  The prefix MUST include an organizational identifier and therefore, for example, MAY be an IANA enterprise number, a (partial) name space URI, or an organization name abbreviation.
 
 # Structure of Information Elements
 
@@ -160,11 +112,11 @@ A SACM data model based on this information model MAY include additional informa
 
 A SACM data model based on this information model MAY include additional information elements that are not defined here. The labels of additional information elements included in different SACM data models MUST NOT conflict with the labels of the information elements defined by this information model, and the names of additional information elements MUST NOT conflict with each other or across multiple data models.  In order to avoid naming conflicts, the labels of additional IEs SHOULD be prefixed to avoid collision across extensions.  The prefix MUST include an organizational identifier and therefore, for example, MAY be an IANA enterprise number, a (partial) name space URI or an organization name abbreviation.
 VIER
-There are two basic types of IE:
+There are two basic types of IEs:
 
-* Attributes: an instance of an attribute type is the simplest IE structure comprised of a unique attribute name and an attribute value (attributes are listed in Section {{AIE}).
+* Attributes: an instance of an attribute type is the simplest IE structure comprised of a unique attribute name and an attribute value (attributes are listed in Section {{Attributes}}.
 
-* Subjects: a subject is a richer structure that has a unique subject name and one or more attributes or subjects (subjects are listed in Section {{CIE}). In essence, instances of a subject type are defined (and differentiated) by the attribute values and subjects associated with it.
+* Subjects: a subject is a richer structure that has a unique subject name and one or more attributes or subjects (subjects are listed in Section {{Subject}}. In essence, instances of a subject type are defined (and differentiated) by the attribute values and subjects associated with it.
 
 The notation the SACM IM is defined in is based on the IPFIX information model syntax described in FIXME. The examples presented in this section use simplified pseudo-code to illustrate the basic structure.
 
@@ -181,17 +133,17 @@ coordinates = (
 
 ~~~~
 
-In general, every piece of information that enables security posture assessment or further enriches the quality of the assessment process can be associated with metadata. In the SACM IM, metadata is represented by specific subjects and is bundled with other attributes or subjects to provide additional information about them. The IM explicitly defines two kinds of metadata: metadata focusing on the data origin (the SACM component that provides the information to the SACM domain) and metadata focusing on the data source (the target endpoint that is assessed). Metadata can also include relationships that refer to other associated IE (or SACM content in general) by using referencing labels that have to be included in the metadata of the associated IE.
+In general, every piece of information that enables security posture assessment or further enriches the quality of the assessment process can be associated with metadata. In the SACM IM, metadata is represented by specific subjects and is bundled with other attributes or subjects to provide additional information about them. The IM explicitly defines two kinds of metadata: metadata focusing on the data origin (the SACM component that provides the information to the SACM domain) and metadata focusing on the data source (the target endpoint that is assessed). Metadata can also include relationships that refer to other associated IEs (or SACM content in general) by using referencing labels that have to be included in the metadata of the associated IE.
 
-Subjects can be nested and the SACM IM allows for circular or recursive nesting. The association of IE via nesting results in a tree-like structure wherein subjects compose the root and intermediary nodes and attributes the leaves of the tree. This semantic structure does not impose a specific structure on SACM data models regarding data in motion or data repository schemata for data at rest.
+Subjects can be nested and the SACM IM allows for circular or recursive nesting. The association of IEs via nesting results in a tree-like structure wherein subjects compose the root and intermediary nodes and attributes the leaves of the tree. This semantic structure does not impose a specific structure on SACM data models regarding data in motion or data repository schemata for data at rest.
 
-The SACM IM provides two top-level subjects that are used to ensure a homogeneous structure for SACM content and its associated metadata: SACM statements and SACM content-elements. Every set of IE that is provided by a SACM component in order to be consumed by another SACM component uses these top-level subjects.
+The SACM IM provides two top-level subjects that are used to ensure a homogeneous structure for SACM content and its associated metadata: SACM statements and SACM content elements. Every set of IEs that is provided by a SACM component in order to be consumed by another SACM component uses these top-level subjects.
 
 ## SACM Content Elements
 
-Every piece of information that is provided by a SACM component is always associated  with a set of metadata, for example, the timestamp at which this set of information was produced (e.g. by a collection task) or what target endpoint this set of information is about (e.g. the data-source or a target endpoint identifier, respectively). The subject that associates content IE with content-metadata IE is called a content-element. Content metadata can also include relationships that express associations with other content-elements.
+Every piece of information that is provided by a SACM component is always associated with a set of metadata, for example, the timestamp at which this set of information was produced (e.g. by a collection task) or what target endpoint this set of information is about (e.g. the data-source or a target endpoint identifier, respectively). The subject that associates content IEs with content-metadata IEs is called a content element. Content metadata can also include relationships that express associations with other content elements.
 
-Example: a set of IE associated with a timestamp and a target endpoint label 
+Example: a set of IEs associated with a timestamp and a target endpoint label. 
 
 ~~~~ pseudo-code
 
@@ -213,10 +165,10 @@ content-element = (
 
 SACM Statements
 
-One or more SACM content elements are bundled in a SACM statement. In contrast to content-metadata, statement-metatdata focuses on the providing SACM component instead of the target endpoint the content is about. The only content-specific metadata included in the SACM statement is the content-type IE. Therefore, multiple content-elements that share the same statement metadata and are of the same content-type can be included in a single SACM statement.
+One or more SACM content elements are bundled in a SACM statement. In contrast to content metadata, statement metatdata focuses on the providing SACM component instead of the target endpoint that the content is about. The only content-specific metadata included in the SACM statement is the content type IE. Therefore, multiple content elements that share the same statement metadata and are of the same content type can be included in a single SACM statement.
 A SACM statement functions similar to an envelope or a header. Its purpose is to enable the tracking of the origin of data inside a SACM domain and more importantly to enable the mitigation of conflicting information that my originate from different SACM components. How a consuming SACM component actually deals with conflicting information is out-of-scope of the SACM IM. Semantically, the term statement implies that the SACM content provided by a SACM component might not be correct in every context, but rather is the result of an best-effort to produce correct information.
 
-Example: A simple SACM statement including a single content-element.
+Example: A simple SACM statement including a single content element.
 
 ~~~~ pseudo-code
 
@@ -232,20 +184,20 @@ sacm-statement = (
       data-source = fb02e551-7101-4e68-8dec-1fde6bd10981
     ),
     hostname = "arbutus"
-  ),
+  )
 )
 
 ~~~~
 
-Example: Conflicting information originating from different SACM components
+Example: Conflicting information originating from different SACM components.
 
 ~~~~ pseudo-code
 
 sacm-statement = (
   statement-metadata = (
     publish-timestamp = 1461934031,
-    data-origin = 24e67957-3d31-4878-8892-da2b35e121c2
-    content-type = observation,
+    data-origin = 24e67957-3d31-4878-8892-da2b35e121c2,
+    content-type = observation
   ),
   content-element = (
     content-metadata = (
@@ -256,7 +208,7 @@ sacm-statement = (
       latitude = N27.99619,
       longitude = E86.92761
     )
-  ),
+  )
 )
 
 sacm-statement = (
@@ -274,23 +226,23 @@ sacm-statement = (
       latitude = N16.67622,
       longitude = E141.55321
     ),
-  ),
+  )
 )
 
 ~~~~
 
 ## Relationship Types
 
-An IE can be associated with another IE, e.g. a user-name attribute can be associated with a content-authorization subject. These references are expressed via the relationships subject, which can be included in a corresponding content-metadata subject. The relationships subject includes a list of one ore more references.
+An IE can be associated with another IE, e.g. a user-name attribute can be associated with a content-authorization subject. These references are expressed via the relationships subject, which can be included in a corresponding content metadata subject. The relationships subject includes a list of one ore more references.
 The SACM IM does not enforce a SACM domain to use unique identifiers as references. Therefore, there are at least two ways to reference another content-element:
 
-* the value of a reference represents a specific content-label that is unique in a SACM domain (and has to be included in the corresponding content-element metadata in order to be referenced), or
-* the reference is a subject that includes an appropriate amount of IE in order to identify the referenced content-element by its actual content.
+* the value of a reference represents a specific content-label that is unique in a SACM domain (and has to be included in the corresponding content element metadata in order to be referenced), or
+* the reference is a subject that includes an appropriate number of IEs to identify the referenced content element by its actual content.
 
-It is recommended to provide unique identifiers in a SACM domain and the SACM IM provides a corresponding naming-convention as a reference in section FIXME. 
+It is recommended to provide unique identifiers in a SACM domain and the SACM IM provides a corresponding naming-convention as a reference in Section FIXME. 
 The alternative highlighted above summarizes a valid approach that does not require unique identifiers and is similar to the approach of referencing target endpoints via identifying attributes included in a characterization record (FIXME REF arch).
 
-Example: an instance of a content-element subject associated with another subject via its content metadata
+Example: an instance of a content element subject associated with another subject via its content metadata.
 
 ~~~~ pseudo-code
 
@@ -319,9 +271,9 @@ content-element = (
 
 ## Events
 
-Event subjects provide a structure to represent the change of IE values that was detected by a collection task at a specific point of time. It is mandatory to include the new values in an event subject and it is recommended to include the past values that were replaced by the new IE values. Every event can be associated with a subject-specific event-timestamp and a lastseen-timestamp that might differ from the corresponding collection-timestamps. If these are omitted the collection-timestamp that is included in the content-metadata subject is used instead.
+Event subjects provide a structure to represent the change of IE values that were detected by a collection task at a specific point in time. It is mandatory to include the new values in an event subject and it is recommended to include the past values that were replaced by the new IE values. Every event can be associated with a subject-specific event timestamp and a last seen timestamp that might differ from the corresponding collection timestamps. If these are omitted the collection timestamp that is included in the content metadata subject is used instead.
 
-Example: A SACM statement containing an event
+Example: A SACM statement containing an event.
 
 ~~~~ pseudo-code
 
@@ -345,12 +297,12 @@ sacm-statement = (
     content-element = (
       content-metadata = (
         collection-timestamp = 146195723,
-        data-source = fb02e551-7101-4e68-8dec-1fde6bd10981
+        data-source = fb02e551-7101-4e68-8dec-1fde6bd10981,
         event-component = current-state
       ),
       hostname = "lilac"
-    ),
-  ),
+    )
+  )
 )
 
 ~~~~
@@ -359,19 +311,19 @@ sacm-statement = (
 
 **to be inserted in section 5 as candidates**
 
-The vocabulary of Information Element names standardized by the SACM IM does not prescribe the use of these exact same names in every SACM data model. If terms diverge, a mapping has to be provided in the corresponding SACM data model document.
+The vocabulary of IE names standardized by the SACM IM does not prescribe the use of these exact same names in every SACM data model. If terms diverge, a mapping has to be provided in the corresponding SACM data model document.
 
-A subset of the names of the information elements defined in this document are appended with "-type". This indicates that the IM defines a set of values for these information elements (e.g. the interface types defined by the IANA registry or the relationship types).
+A subset of the names of the IEs defined in this document are appended with "-type". This indicates that the IM defines a set of values for these IEs (e.g. the interface types defined by the IANA registry or the relationship types).
 
-## Vocabulary of Categories
+## Vocabulary of Categories {#Categories}
 
-Categories are special Information Elements that enable to refer to multiple types of IE via just one name. Therefore, they are similar to a type-choice. A prominent example of a category is network-address. Network-address is a category that every kind of network address is associated with, e.g. mac-address, ipv4-address, ipv6-address, or typed-network-address. If a CIE includes network-address as one of its components, any of that categories members is valid to be used in its stead.
+Categories are special IEs that enable to refer to multiple types of IE via just one name. Therefore, they are similar to a type-choice. A prominent example of a category is network-address. Network-address is a category that every kind of network address is associated with, e.g. mac-address, ipv4-address, ipv6-address, or typed-network-address. If a subject includes network-address as one of its components, any of the category members are valid to be used in its place.
 
-Another prominent example is EndpointIdentifier. Some IE can be used to identify (and over time re-recognize) target endpoints - those are associated with the category endpoint-identifier.
+Another prominent example is endpoint-identifier. Some IEs can be used to identify (and over time re-recognize) target endpoints - those are associated with the category endpoint-identifier.
 
 content:
 
-: this is a very broad category. Content is the payload of a content element in a SACM statement. Formally, metadata is the complement to content and everything that is not part of SACM statement metadata or content element metadata is therefore considered to be content. Every IE can be content (although the same type of IE can be used in the metadata at the same time - and those would not be content as described before). Annotating every IE with this category would be highly redundant and is therefore omitted for brevity.
+: This is a very broad category. Content is the payload of a content element in a SACM statement. Formally, metadata is the complement to content and everything that is not part of SACM statement metadata or content element metadata is therefore considered to be content. Every IE can be content (although the same type of IE can be used in the metadata at the same time - and those would not be content as described before). Annotating every IE with this category would be highly redundant and is therefore omitted for brevity.
 
 network-address: (work-in-progress)
 
@@ -387,9 +339,9 @@ software-component: (work-in-progress)
 
 software-label: (work-in-progress)
 
-## Vocabulary of Atomic Information Elements {#AIE}
+## Vocabulary of Attributes {#Attributes}
 
-The content of every Atomic Information Element is expressed in a single value. If an alternative representation via a Composite Information Element is also defined by the SACM IM, the names of both variants are distinguished by a prefixed "a." and "c." (e.g. a.timestamp and c.timestamp).
+The content of every Attribute is expressed in a single value. If an alternative representation via a Subject is also defined by the SACM IM, the names of both variants are distinguished by a prefixed "a." and "s." (e.g. a.timestamp and s.timestamp).
 
 access-privilege-type:
 
@@ -481,19 +433,19 @@ application-version:
 
 authenticator:
 
-: a label that references a SACM component that can authenticate target endpoints (can be used in a target-endpoint CIE to express that the te was authenticated by that SACM component)
+: a label that references a SACM component that can authenticate target endpoints (can be used in a target-endpoint Subject to express that the te was authenticated by that SACM component)
 
 : References: none
 
 attribute-name:
 
-: a value that can express the attribute name of generic Attribute-Value-Pair CIE
+: a value that can express the attribute name of generic Attribute-Value-Pair Subject
 
 : References: none
 
 attribute-value:
 
-: a value that can express the attribute value of generic Attribute-Value-Pair CIE
+: a value that can express the attribute value of generic Attribute-Value-Pair Subject
 
 : References: none
 
@@ -543,7 +495,7 @@ confidence:
 
 content-action:
 
-: a set of types that expresses a type of action (e.g. add, delete, update). Can be associated, for instance, with an event CIE or with an network observation
+: a set of types that expresses a type of action (e.g. add, delete, update). Can be associated, for instance, with an event subject or with an network observation
 
 : References: {{ARF}}
 
@@ -589,23 +541,23 @@ a.data-source:
 
 decimal-fraction-denominator:
 
-: a denominator value to express a decimal fraction time stamp (e.g. in c.timestamp)
+: a denominator value to express a decimal fraction time stamp (e.g. in s.timestamp)
 
 : References: none
 
 decimal-fraction-numerator:
 
-: a numerator value to express a decimal fraction time stamp (e.g. in c.timestamp)
+: a numerator value to express a decimal fraction time stamp (e.g. in s.timestamp)
 
 default-depth:
 
-: a value that expresses how often a circular reference of CIE is allowed to repeat, or how deep a recursive nesting may occour, respectively.
+: a value that expresses how often a circular reference of a subject is allowed to repeat, or how deep a recursive nesting may occour, respectively.
 
 : References: none
 
 discoverer:
 
-: a label that refers to the SACM component that discovered a target endpoint (can be used in a target-endpoint CIE to express, for example, that the te was authenticated by that SACM component)
+: a label that refers to the SACM component that discovered a target endpoint (can be used in a target-endpoint subject to express, for example, that the te was authenticated by that SACM component)
 
 : References: none
 
@@ -623,7 +575,7 @@ event-type:
 
 event-threshold:
 
-: if applicable, a value that can be included in an event CIE to indicate what numeric threshold value was crossed to triggered that event
+: if applicable, a value that can be included in an event subject to indicate what numeric threshold value was crossed to trigger that event
 
 : Reference: none
 
@@ -747,7 +699,7 @@ method-repository:
 
 network-access-level-type:
 
-: a set of types that expresses categories of network  access-levels (e.g. block, quarantine, etc.) 
+: a set of types that expresses categories of network access-levels (e.g. block, quarantine, etc.) 
 
 : References: {{IFMAP}}
 
@@ -903,13 +855,13 @@ public-key:
 
 relationship-content-element-guid:
 
-: a reference to a specific content element used in a relationship CIE
+: a reference to a specific content element used in a relationship subject
 
 : References: none
 
 relationship-statement-guid:
 
-: a reference to a specific SACM statement used in a relationship CIE
+: a reference to a specific SACM statement used in a relationship subject
 
 : References: none
 
@@ -921,7 +873,7 @@ relationship-object-label:
 
 relationship-type:
 
-: a set of types that is in every instance of a relationship CIE to highlight what kind of relationship exists between the CIE the relationship is included in (e.g. associated_with_user, applies_to_session, seen_on_interface, associated_with_flow, contains_virtual_device)
+: a set of types that is in every instance of a relationship subject to highlight what kind of relationship exists between the subject the relationship is included in (e.g. associated_with_user, applies_to_session, seen_on_interface, associated_with_flow, contains_virtual_device)
 
 : References: none
 
@@ -957,7 +909,7 @@ status:
 
 sub-administrative-domain:
 
-: a label for related child domains an administrative domain can be composed of (used in the CIE c.administrative-domain)
+: a label for related child domains an administrative domain can be composed of (used in the subject s.administrative-domain)
 
 : References: none
 
@@ -969,7 +921,7 @@ sub-interface-label:
 
 super-administrative-domain:
 
-: a label for related parent domains an administrative domain is part of (used in the CIE c.administrative-domain)
+: a label for related parent domains an administrative domain is part of (used in the subject s.administrative-domain)
 
 : References: none
 
@@ -1007,7 +959,7 @@ a.timestamp:
 
 timestamp-type:
 
-: a set of types that express what type of action or event happened at that point of time (e.g. discovered, classified, collected, published). Can be included in a generic c.timestamp CIE
+: a set of types that express what type of action or event happened at that point of time (e.g. discovered, classified, collected, published). Can be included in a generic s.timestamp subject
 
 : References: none
 
@@ -1067,9 +1019,9 @@ WGS84-altitude:
 
 : References: {{SCAP-AI}}
 
-## Vocabulary of Composite Information Elements {#CIE}
+## Vocabulary of Subject Information Elements {#Subjects}
 
-The content of every Composite Information Element is expressed by the mandatory and optional IE it can be composed of. The components of an CIE can have a cardinality associated with them:
+The content of every subject IEs is expressed by the mandatory and optional IE it can be composed of. The components of a subject can have a cardinality associated with them:
 
 * (\*): zero to unbounded occurrences
 * (\+): one to unbounded occurrences
@@ -1077,9 +1029,9 @@ The content of every Composite Information Element is expressed by the mandatory
 * (n,m): between n and m occurrences
 * no cardinality: one occurrence
 
-If there is no cardinality highlighted or the cardinality (\+) or (n,m) is used, including this IE in the CIE is mandatory. In contrast, optional IE are expressed via the cardinality (?) or (\*).
-An CIE can prescribe a strict sequence to the component IE it contains. This in indicated by an (s).
-CIE that are prefixed with "c." have a simplified AIE counterpart that is prefixed with "a."
+If there is no cardinality highlighted or the cardinality (\+) or (n,m) is used, including this IE in the subject is mandatory. In contrast, optional IE are expressed via the cardinality (?) or (\*).
+A subject can prescribe a strict sequence to the component IE it contains. This in indicated by an (s).
+subject that are prefixed with "s." have a simplified attribute counterpart that is prefixed with "a."
 
 address-association (s):
 
@@ -1093,9 +1045,9 @@ address-association (s):
 
 : address-type (?)
 
-c.administrative-domain:
+s.administrative-domain:
 
-: this CIE is intended to express more complex setups of interconnected administrative domains
+: this subject is intended to express more complex setups of interconnected administrative domains
 
 : a.administrative-domain
 
@@ -1123,7 +1075,7 @@ application:
 
 application-instance:
 
-: a specific instance of an application that is installed on an endpoint. The application-label is used to refer to corresponding information stored in an application CIE
+: a specific instance of an application that is installed on an endpoint. The application-label is used to refer to corresponding information stored in an application subject
 
 : application-label
 
@@ -1131,7 +1083,7 @@ application-instance:
 
 attribute-value-pair:
 
-: a generic CIE that is used to express various AVP (e.g. Radius Attributes)
+: a generic subject that is used to express various AVP (e.g. Radius Attributes)
 
 : attribute-name
 
@@ -1165,15 +1117,15 @@ content-metadata:
 
 : content-type
 
-: c.data-source (?)
+: s.data-source (?)
 
 : data-origin (?)
 
 : relationship (\*)
 
-c.data-source:
+s.data-source:
 
-: a CIE that refers to a target endpoint that is the source of SACM content - either via a label (a.data-source, which could also be used without this CIE), or via a list of endpoint-identifiers (category). Both can be included at the same time but MUST NOT conflict.
+: a subject that refers to a target endpoint that is the source of SACM content - either via a label (a.data-source, which could also be used without this subject), or via a list of endpoint-identifiers (category). Both can be included at the same time but MUST NOT conflict.
 
 : a.data-source (?)
 
@@ -1189,7 +1141,7 @@ dst-flow-element:
 
 ethernet-interface:
 
-: the only two mandatory component of this CIE is the mac-address and the generated label (to distinguish non-unique addresses). This acknowledges the fact that in many cases this is the only information available about an Ethernet interface. If there is more detail information available it MUST be included to avoid ambiguity and to increase the usefulness for consumer of information. The exception are sub-interface-labels and super-interface-labels, which SHOULD be included.
+: the only two mandatory component of this subjectis the mac-address and the generated label (to distinguish non-unique addresses). This acknowledges the fact that in many cases this is the only information available about an Ethernet interface. If there is more detail information available it MUST be included to avoid ambiguity and to increase the usefulness for consumer of information. The exception are sub-interface-labels and super-interface-labels, which SHOULD be included.
 
 : interface-label
 
@@ -1209,7 +1161,7 @@ ethernet-interface:
 
 event (s):
 
-: this a special purpose CIE that represents the change of content. As with content-elements basically every content can be included in the two content entries. The mandatory content entry represents the "after" state of the content and the optional content entry can represent the "before" state if available or required.
+: this a special purpose subject that represents the change of content. As with content elements basically every content can be included in the two content entries. The mandatory content entry represents the "after" state of the content and the optional content entry can represent the "before" state if available or required.
 
 : event-type (?)
 
@@ -1241,7 +1193,7 @@ flow-record:
 
 flow-statistics:
 
-: this CIE aggregates bytes and units send and received
+: this subject aggregates bytes and units send and received
 
 : bytes-received
 
@@ -1257,7 +1209,7 @@ group:
 
 ipv4-address:
 
-: an IPv4 address is always associated with a subnet. This CIE combines these both tightly nit values. Either a subnet mask or a CIDR notation bitmask SHOULD be included.
+: an IPv4 address is always associated with a subnet. This subject combines these both tightly nit values. Either a subnet mask or a CIDR notation bitmask SHOULD be included.
 
 : ipv4-address-value
 
@@ -1267,7 +1219,7 @@ ipv4-address:
 
 ipv6-address:
 
-: an IPv6 address is always associated with a subnet. This CIE combines these both tightly nit values. A CIDR notation bitmask SHOULD be included.
+: an IPv6 address is always associated with a subnet. This subject combines these both tightly nit values. A CIDR notation bitmask SHOULD be included.
 
 : ipv6-address-value
 
@@ -1275,7 +1227,7 @@ ipv6-address:
 
 location:
 
-: a CIE that aggregates potential details about a location
+: a subject that aggregates potential details about a location
 
 : location-name
 
@@ -1303,7 +1255,7 @@ operation-system:
 
 organization:
 
-: this CIE aggregates information about an organization and can be references via its id
+: this subject aggregates information about an organization and can be references via its id
 
 : organization-id
 
@@ -1313,7 +1265,7 @@ organization:
 
 person:
 
-: a CIE that aggregates the details about a person and combines it with a identifier unique to SACM domains
+: a subject that aggregates the details about a person and combines it with a identifier unique to SACM domains
 
 : person-first-name
 
@@ -1327,7 +1279,7 @@ person:
 
 phone-contact:
 
-: this CIE can be used to reference a phone number and how it fucntions as a contact
+: this subject can be used to reference a phone number and how it fucntions as a contact
 
 : phone-number
 
@@ -1335,7 +1287,7 @@ phone-contact:
 
 priviledge:
 
-: a CIE to express priviledges via a specific name/value pair
+: a subject to express priviledges via a specific name/value pair
 
 : privilege-name
 
@@ -1343,7 +1295,7 @@ priviledge:
 
 relationship:
 
-: the relationship CIE enables to associate the CIE it is included in with other CIE if they contain a unique identifier or label - providing an alternative to including attributes of other content CIE as a means to map them (which remains a valid alternative, though). The relationship CIE MUST at least reference one relationship object (either a SACM statement iden
+: the relationship subject enables to associate the subject it is included in with other subject if they contain a unique identifier or label - providing an alternative to including attributes of other content subject as a means to map them (which remains a valid alternative, though). The relationship subject MUST at least reference one relationship object (either a SACM statement iden HENK/NANCY FIXME what goes here?):
 
 : relationship-type
 
@@ -1355,7 +1307,7 @@ relationship:
 
 sacm-statement:
 
-: every SACM components produces information in this format. This CIE can be considered the root IE for every SACM message generated. There MUST be at least one content element included in a SACM statement and if there are more than one, they are ordered in a sequence.
+: every SACM components produces information in this format. This subject can be considered the root IE for every SACM message generated. There MUST be at least one content element included in a SACM statement and if there are more than one, they are ordered in a sequence.
 
 : statement-metadata
 
@@ -1411,13 +1363,13 @@ statement-metadata:
 
 target-endpoint:
 
-: this is a central CIE used in the process chains a SACM domain can compose. Theoretically every kind of information can be associated with a target endpoint CIE via its corresponding content element. A few select IE can be stored in the CIE itself to reduce the overhead of following references that would occur in most scenarios. If the hostname is unknown the value has to be set as an equivalent to "not available" (e.g. NULL). Comment from the authors: This is "work in progress" an a good basis for discussion
+: this is a central subject used in the process chains a SACM domain can compose. Theoretically every kind of information can be associated with a target endpoint subject via its corresponding content element. A few select IE can be stored in the subject itself to reduce the overhead of following references that would occur in most scenarios. If the hostname is unknown the value has to be set as an equivalent to "not available" (e.g. NULL). Comment from the authors: This is "work in progress" an a good basis for discussion
 
 : host-name
 
 : te-label
 
-: c.administrative-domain (?)
+: s.administrative-domain (?)
 
 : application-instance (\*)
 
@@ -1425,7 +1377,7 @@ target-endpoint:
 
 : address-association (\*)
 
-: c.data-source (?)
+: s.data-source (?)
 
 : operation-system (?)
 
@@ -1435,7 +1387,7 @@ te-profile:
 
 typed-timestamp:
 
-: a flexible timestamp CIE that can express the specific type of timestamp via its content. This is an alternative to the "named" timestamps that do not include a timestamp-type
+: a flexible timestamp subject that can express the specific type of timestamp via its content. This is an alternative to the "named" timestamps that do not include a timestamp-type
 
 : decimal-fraction-denominator
 
@@ -1445,7 +1397,7 @@ typed-timestamp:
 
 user:
 
-: a CIE that references details of a specific user known in a SACM domain active on a specific target endpoint
+: a subject that references details of a specific user known in a SACM domain active on a specific target endpoint
 
 : user-id
 
@@ -1457,9 +1409,9 @@ user:
 
 # Example composition of SACM statements
 
-This section illustrates examples how SACM statements are composed of content elements, how relationship CIE can be used in content metadata and gives an impression how the categories statement-type, content-topic and content-type are intended to be used.
+This section illustrates examples how SACM statements are composed of content elements, how relationship subject can be used in content metadata and gives an impression how the categories statement-type, content-topic and content-type are intended to be used.
 
-The SACM statements instances are written in pseudo code. AIE end with a colon. Some AIE include exemplary values to, for example, present how references to guid and labels can be used. For the sake of brevity, not all mandatory IE that are part of a CIE are always included (e.g. as it is the case with target-endpoint).
+The SACM statements instances are written in pseudo code. Attributes end with a colon. Some attributes include exemplary values to, for example, present how references to guid and labels can be used. For the sake of brevity, not all mandatory IE that are part of a subject are always included (e.g. as it is the case with target-endpoint).
 
 The example shows three SACM statements that were produced by three different SACM components that overall include four related content elements.
 
@@ -1471,7 +1423,7 @@ sacm statement
   statement-metadata
     statement-guid: example-sguid-one
     data-origin: SACM-component-label-one
-    statement-publish-timestamp: exmample-TS-one
+    statement-publish-timestamp: example-TS-one
     statement-type: Observation
   content-element
     content-metadata

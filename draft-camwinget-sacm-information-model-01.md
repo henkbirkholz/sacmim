@@ -134,11 +134,14 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "OPTIONAL" in this document are to be interpreted as described in RFC
 2119, BCP 14 {{RFC2119}}.
 
+# Information Element Examples
+The notation used to define the SACM Information Elements (IEs) is based on the IPFIX information model syntax described in FIXME.  However, there are several examples presented throughout the document that use a simplified pseudo-code to illustrate the basic structure. It should be noted that while they include actual names of subjects and attributes as well as values, they are not intended to influence how corresponding SACM IEs should be defined in {{Information Element Vocabulary}}. The examples are provided for demonstration purposes only. 
+
 # Information Elements
 
 **to be inserted between section 2 and section 3**
 
-The Information Elements (IE) defined in this document comprise the building blocks by which all SACM Content is composed. They are consumed and provided by SACM components on the data plane. Every information element has a unique label: its name. Every type of IE defined by the SACM IM is registered as a type at the IANA registry. The Integer Index of the IANA SMI number tables can be used by SACM data models.
+The IEs defined in this document comprise the building blocks by which all SACM Content is composed. They are consumed and provided by SACM components on the data plane. Every information element has a unique label: its name. Every type of IE defined by the SACM IM is registered as a type at the IANA registry. The Integer Index of the IANA SMI number tables can be used by SACM data models.
 
 ## Context of Information Elements
 
@@ -395,25 +398,17 @@ access-privilege-type:
 
 : a set of types that represents access privileges (e.g. read, write, none)
 
-: References: none
-
 account-name:
 
 : a label that uniquely identifies an account that can require some form of (user) authentication to access
-
-: References: none
 
 a.administrative-domain:
 
 : a label the is supposed to uniquely identify an administrative domain
 
-: References {{IFMAP}}
-
 address-association-type:
 
 : a set of types that defines the type of address associations (e.g. broadcast-domain-member-list, ip-subnet-member-list, ip-mac, shared-backhaul-interface, etc.)
-
-: References: none
 
 address-mask-value:
 
@@ -423,13 +418,9 @@ address-type:
 
 : a set of types that specifies the type of address that is expressed in an address CIE (e.g. ethernet, modbus, zigbee)
 
-: References: none
-
 address-value:
 
 : a value that expresses a generic network address
-
-: References: none
 
 : Category: network-address
 
@@ -437,15 +428,11 @@ application-component:
 
 : a label that references a "sub"-application that is part of the application (e.g. an add-on, a chiper-suite, a library)
 
-: References: {{SWID}}
-
 : Category: software-component
 
 application-label:
 
 : a label that is supposed to uniquely reference an application
-
-: References: {{SWID}}
 
 : Category: software-label
 
@@ -453,15 +440,11 @@ application-type:
 
 : a set of types (FIXME maybe a finite set is not realistic here - value not enumerator?) that identifies the type of (user-space) application (e.g. text-editor, policy-editor, service-client, service-server, calender, rouge-like RPG)
 
-: References: {{SWID}}
-
 : Category: software-type
 
 application-manufacturer:
 
 : the name of the vendor that created the application
-
-: References: {{SWID}}
 
 : Category: software-manufacturer
 
@@ -469,13 +452,9 @@ application-name:
 
 : a value that represents the name of an application given by the manufacturer
 
-: References: {{SWID}}
-
 application-version:
 
 : a version string that identifies a specific version of an application
-
-: References: {{SWID}}
 
 : Category: software-version
 
@@ -483,49 +462,33 @@ authenticator:
 
 : a label that references a SACM component that can authenticate target endpoints (can be used in a target-endpoint CIE to express that the te was authenticated by that SACM component)
 
-: References: none
-
 attribute-name:
 
 : a value that can express the attribute name of generic Attribute-Value-Pair CIE
-
-: References: none
 
 attribute-value:
 
 : a value that can express the attribute value of generic Attribute-Value-Pair CIE
 
-: References: none
-
 authentication-type:
 
 : a set of types that expresses which type of authentication was used to enable a network interaction/connection
-
-: References: {{PXGRID}}
 
 birthdate:
 
 : a label for the registered day of birth of a natural person (e.g. the date of birth of a person as an ISO date string http://rs.tdwg.org/ontology/voc/Person#birthdate)
 
-: References: {{SCAP-AI}}
-
 bytes-received:
 
 : a value that represents a number of octets received on a network interface
-
-: Reference : {{PXGRID}}
 
 bytes-sent:
 
 : a value that represents a number of octets sent on a network interface
 
-: Reference : {{PXGRID}}
-
 certificate:
 
 : a value that expresses a certificate that can be collected from a target endpoint
-
-: References: none
 
 : Category: endpoint-identifier
 
@@ -533,49 +496,33 @@ collection-task-type:
 
 : a set of types that defines how collected SACM content was acquired (e.g. network-observation, remote-acquisition, self-reported)
 
-: Reference: none
-
 confidence:
 
 : a representation of the subjective probability that the assessed value is correct.  If no confidence value is given it is assumed that the confidence is 1 (limits confidence values to the range between zero and one)
-
-: References: {{ARF}}
 
 content-action:
 
 : a set of types that expresses a type of action (e.g. add, delete, update). Can be associated, for instance, with an event CIE or with an network observation
 
-: References: {{ARF}}
-
 content-elements:
 
 : a value that represents the number of content-elements included in a SACM statement
-
-: References: none
 
 content-topic:
 
 : a set of types that defines what kind of concept the information is included in a content element (e.g. Session, User, Interface, PostureProfile, Flow, PostureAssessment, TargetEndpoint)
 
-: References: none
-
 content-type:
 
 : a set of types that defines what kind of information is included in a content element (e.g. EndpointConfiguration, EndpointState, DirectoryEntry, Event, Incident)
-
-: References: none
 
 country-code:
 
 : a set of types according to ISO 3166-1 trigraphic codes of countries
 
-: References: FIXME
-
 data-origin:
 
 : a label that uniquely identifies a SACM component in and across SACM domains
-
-: References: none
 
 : Aliases: sacm-component-id
 
@@ -583,15 +530,11 @@ a.data-source:
 
 : a label that is supposed to uniquely identify the data source (e.g. a target endpoint or sensor) that provided an initial endpoint attribute record
 
-: References: {{ARF}}
-
 : Aliases: te-id (work-in-progress)
 
 decimal-fraction-denominator:
 
 : a denominator value to express a decimal fraction time stamp (e.g. in c.timestamp)
-
-: References: none
 
 decimal-fraction-numerator:
 
@@ -601,37 +544,25 @@ default-depth:
 
 : a value that expresses how often a circular reference of CIE is allowed to repeat, or how deep a recursive nesting may occour, respectively.
 
-: References: none
-
 discoverer:
 
 : a label that refers to the SACM component that discovered a target endpoint (can be used in a target-endpoint CIE to express, for example, that the te was authenticated by that SACM component)
-
-: References: none
 
 email-address:
 
 : a value that expresses an email-address
 
-: References: none
-
 event-type:
 
 : a set of types that define the categories of an event (e.g. access-level-change, change-of-priviledge, change-of-authorization, environmental-event, or provisioning-event)
-
-: Reference: none
 
 event-threshold:
 
 : if applicable, a value that can be included in an event CIE to indicate what numeric threshold value was crossed to triggered that event
 
-: Reference: none
-
 event-threshold-name:
 
 : if an event is created due to a crossed threshold, the threshold might have a name associated with it that can be expressed via this value
-
-: References: none
 
 event-trigger:
 
@@ -641,15 +572,11 @@ firmware-id:
 
 : a label that represents the BIOS or firmware ID of a specific target endpoint
 
-: Reference: none
-
 : Category: endpoint-identifier
 
 hardware-serial-number:
 
 : a value that identifies a piece of hardware that is a component of a composite target endpoint (in essence, every target endpoint is a composite) and can be acquired from a target endpoint by a collection task
-
-: Reference: none
 
 : Category: endpoint-identifier
 
@@ -657,27 +584,19 @@ host-name:
 
 : a label typically associated with an endpoint but not always intended to be unique in a given scope
 
-: References {{ARF}}, {{SCAP-AI}}
-
 : Category: endpoint-identifier
 
 interface-label:
 
 : a unique label a network interface can be referenced with
 
-: Reference: none
-
 ipv6-address-subnet-mask-cidrnot:
 
 : an IPv6 subnet bit mask in CIDR notation
 
-: References: TBD
-
 ipv6-address-value:
 
 : an IPv4 address value
-
-: References: TBD
 
 : Category: endpoint-identifier, network-address
 
@@ -685,19 +604,13 @@ ipv4-address-subnet-mask-cidrnot:
 
 : an IPv4 subnet bit mask in CIDR notation
 
-: References: TBD
-
 ipv4-address-subnet-mask:
 
 : an IPv4 subnet mask
 
-: References: TBD
-
 ipv4-address-value:
 
 : an IPv4 address value
-
-: References: TBD
 
 : Category: endpoint-identifier, network-address
 
@@ -705,13 +618,9 @@ layer2-interface-type:
 
 : a set of types referenced by IANA ifType
 
-: References: {{RFC3635}}, {{RFC1573}}
-
 layer4-port-address:
 
 : a layer 4 port address (typically used, for example, with TCP and UDP)
-
-: References: none
 
 : Category: network-address
 
@@ -723,13 +632,9 @@ location-name:
 
 : a value that represents a named region of space FIXME
 
-: References: {{IFMAP}}, {{ARF}}, {{SCAP-AI}}
-
 mac-address:
 
 : a value that expresses an Ethernet address
-
-: References: {{IFMAP}}, {{ARF}}, {{SCAP-AI}}
 
 : Category: endpoint-identifier, network-address
 
@@ -737,61 +642,41 @@ method-label:
 
 : a label that references a specific method registered and used in a SACM domain (e.g. method to match and re-identify target endpoints via identifying attributes)
 
-: References: none
-
 method-repository:
 
 : a label that references a SACM component methods can be registered at and that can provide guidance in the form of registered methods to other SACM components
-
-: References: none
 
 network-access-level-type:
 
 : a set of types that expresses categories of network  access-levels (e.g. block, quarantine, etc.) 
 
-: References: {{IFMAP}}
-
 network-id:
 
 : most networks, such as AS, an OSBF domains, or vlans, can have an ID that is represented via this AIE
-
-: References: none
 
 network-interface-name:
 
 : a label that uniquely identifies an interface associated with a distinguishable endpoint
 
-: References: FIXME
-
 network-layer:
 
 : a set of layers that express the specific network layer an interface operate on (typically layer 2-4)
-
-: References: FIXME
 
 network-name:
 
 : a label that is associated with a network. Some networks, for example effective layer2-broadcast-domains, are difficult to "grasp" and therefore quite complicated to name
 
-: References: none
-
 organization-id:
 
 : a label that is supposed to uniquely identify an organization
-
-: References: {{ARF}}
 
 organization-name:
 
 : a value that represents the name of an organization
 
-: References: {{ARF}}
-
 os-component:
 
 : a label that references a "sub-component" that is part of the operating system (e.g. a kernel module, microcode, or ACPI table)
-
-: References: {{SWID}}
 
 : Category: software-component
 
@@ -799,15 +684,11 @@ os-label:
 
 : a label that references a specific version of an operating system, including patches and hotfixes
 
-: References: {{SWID}}
-
 : Category: software-label
 
 os-manufacturer:
 
 : the name of the manufacturer of an operating system
-
-: References: {{IFMAP}}
 
 : Category: software-manufacturer
 
@@ -815,15 +696,11 @@ os-name:
 
 : the name of an operating system
 
-: References: {{IFMAP}}
-
 : Category: software-name
 
 os-type:
 
 : a set of types that identifies the type of an operating system (e.g. real-time, security-enhanced, consumer, server)
-
-: References: none
 
 : Category: software-type
 
@@ -837,67 +714,45 @@ patch-id:
 
 : a label the uniquely identifies a specific software patch
 
-: References: {{ARF}}
-
 patch-name:
 
 : the vendor's name of a software patch
-
-: References: {{ARF}}, {{SWID}}
 
 person-first-name:
 
 : the first name of a natural person
 
-: References: {{ARF}}, {{SCAP-AI}}
-
 person-last-name:
 
 : the last name of a natural person
-
-: References: {{ARF}}, {{SCAP-AI}}
 
 person-middle-name:
 
 : the first name of a natural person
 
-: References: {{ARF}}, {{SCAP-AI}}
-
 phone-number:
 
 : a label that expresses the u.s. national phone number (e.g. pattern value="(\(\d{3}\) )?\d{3}-\d{4}")
-
-: References: {{ARF}}, {{SCAP-AI}}
 
 phone-number-type:
 
 : a set of types that express the type of a phone number (e.g. DSN, Fax, Home, Mobile, Pager, Secure, Unsecure, Work, Other)
 
-: References: {{ARF}}
-
 privilege-name:
 
 : the attribute-name of the privilege represented as an AVP
-
-: References: none
 
 privilege-value:
 
 : the value-content of the privilege represented as an AVP
 
-: References: none
-
 protocol:
 
 : a set of types that defines specific protocols above layer 4 (e.g. http, https, dns, ipp, or unknown)
 
-: References: none
-
 public-key:
 
 : the value of a public key (regardless of its method of creation, crypto-system, or signature scheme) that can be collected from a target endpoint
-
-: Reference: none
 
 : Category: endpoint-identifier
 
@@ -905,97 +760,65 @@ relationship-content-element-guid:
 
 : a reference to a specific content element used in a relationship CIE
 
-: References: none
-
 relationship-statement-guid:
 
 : a reference to a specific SACM statement used in a relationship CIE
-
-: References: none
 
 relationship-object-label:
 
 : a reference to a specific label used in content (e.g. a te-label or a user-id). This reference is typically used if matching content AIE can be done efficiantly and can also be included in addition to a relationship-content-element-guid reference.
 
-: References: none
-
 relationship-type:
 
 : a set of types that is in every instance of a relationship CIE to highlight what kind of relationship exists between the CIE the relationship is included in (e.g. associated_with_user, applies_to_session, seen_on_interface, associated_with_flow, contains_virtual_device)
-
-: References: none
 
 role-name:
 
 : a label that references a collection of privileges assigned to a specific entity (identity? FIXME)
 
-: References: FIXME 
-
 session-state-type:
 
 : a set of types a discernible session (an ongoing network interaction) can be in (e.g. Authenticating, Authenticated, Postured, Started, Disconnected)
-
-: References: {{PXGRID}}
 
 statement-guid:
 
 : a label that expresses a global unique ID referencing a specific SACM statement that was produced by a SACM component
 
-: References: none
-
 statement-type:
 
 : a set of types that define the type of content that is included in a SACM statement (e.g. Observation, DirectoryContent, Correlation, Assessment, Guidance)
-
-: References: none
 
 status:
 
 : a set of types that defines possible result values for a finding in general (e.g. true, false, error, unknown, not applicable, not evaluated)
 
-: References: {{ARF}}
-
 sub-administrative-domain:
 
 : a label for related child domains an administrative domain can be composed of (used in the CIE c.administrative-domain)
-
-: References: none
 
 sub-interface-label:
 
 : a unique label a sub network interface (e.g. a tagged vlan on a trunk) can be referenced with
 
-: References: none
-
 super-administrative-domain:
 
 : a label for related parent domains an administrative domain is part of (used in the CIE c.administrative-domain)
-
-: References: none
 
 super-interface-label:
 
 : a unique label a super network interface (e.g. a physical interface a tunnel interface terminates on) can be referenced with
 
-: References: none
-
 te-assessment-state:
 
 : a set of types that defines the state of assessment of a target-endpoint (e.g. in-discovery, discovered, in-classification, classified, in-assessment, assessed)
-
-: References: {{ARF}}
 
 te-label:
 
 : an identifying label created from a set of identifying attributes used to reference a specific target endpoint
 
-: References: none
-
 te-id:
 
 : an identifying label that is created randomly, is supposed to be unique, and used to reference a specific target endpoint
-
-: References: {{ARF}}, {{SWID}}
 
 : Aliases: data-source
 
@@ -1003,31 +826,21 @@ a.timestamp:
 
 : a timestamp the expresses a specific point in time
 
-: References: {{IFMAP}}, {{ARF}}
-
 timestamp-type:
 
 : a set of types that express what type of action or event happened at that point of time (e.g. discovered, classified, collected, published). Can be included in a generic c.timestamp CIE
-
-: References: none
 
 units-received:
 
 : a value that represents a number of units (e.g. frames, packets, cells or segments) received on a network interface
 
-: Reference : {{PXGRID}}
-
 units-sent:
 
 : a value that represents a number of units (e.g. frames, packets, cells or segments) sent on a network interface
 
-: Reference : {{PXGRID}}
-
 username:
 
 : a part of the credentials required to access an account that can be collected from a target endpoint
-
-: References: none
 
 : Category: endpoint-identifier
 
@@ -1035,37 +848,25 @@ user-directory:
 
 : a label that identifies a specific type of user-directory (e.g. ldap, active-directory, local-user)
 
-: Reference: {{PXGRID}}
-
 user-id:
 
 : a label that references a specific user known in a SACM domain
-
-: References: {{PXGRID}}
 
 web-site:
 
 : a URI that references a web-site
 
-: References: {{ARF}}
-
 WGS84-longitude:
 
 : a label that represents WGS 84 rev 2004 longitude
-
-: References: {{SCAP-AI}}
 
 WGS84-latitude:
 
 : a label that represents WGS 84 rev 2004 latitude
 
-: References: {{SCAP-AI}}
-
 WGS84-altitude:
 
 : a label that represents WGS 84 rev 2004 altitude
-
-: References: {{SCAP-AI}}
 
 ## Vocabulary of Composite Information Elements {#CIE}
 

@@ -134,11 +134,14 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "OPTIONAL" in this document are to be interpreted as described in RFC
 2119, BCP 14 {{RFC2119}}.
 
+# Information Element Examples
+The notation used to define the SACM Information Elements (IEs) is based on the IPFIX information model syntax described in FIXME.  However, there are several examples presented throughout the document that use a simplified pseudo-code to illustrate the basic structure. It should be noted that while they include actual names of subjects and attributes as well as values, they are not intended to influence how corresponding SACM IEs should be defined in {{Information Element Vocabulary}}. The examples are provided for demonstration purposes only. 
+
 # Information Elements
 
 **to be inserted between section 2 and section 3**
 
-The Information Elements (IE) defined in this document comprise the building blocks by which all SACM Content is composed. They are consumed and provided by SACM components on the data plane. Every information element has a unique label: its name. Every type of IE defined by the SACM IM is registered as a type at the IANA registry. The Integer Index of the IANA SMI number tables can be used by SACM data models.
+The IEs defined in this document comprise the building blocks by which all SACM Content is composed. They are consumed and provided by SACM components on the data plane. Every information element has a unique label: its name. Every type of IE defined by the SACM IM is registered as a type at the IANA registry. The Integer Index of the IANA SMI number tables can be used by SACM data models.
 
 ## Context of Information Elements
 

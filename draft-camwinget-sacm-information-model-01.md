@@ -41,54 +41,6 @@ normative:
   RFC3635:
   RFC1573:
   # I-D.ietf-sacm-architecture-13:
-  SWID:
-    title: >
-      Information technology - Software asset management - Part 2: Software identification tag'
-    date: 2015-10-01
-    seriesinfo:
-      ISO/IEC: 19770-2:2015
-  IFMAP:
-    title: >
-      TCG Trusted Network Communications - TNC IF-MAP Metadata for Network Security Specification Version 1.1r9
-    date: 2012-05-07
-  ARF:
-    title: >
-      Assessment Results Format
-    author:
-      name: The MITRE Corporation.
-    date: 2010
-  SCAP-AI:
-    title: >
-      Specification for Asset Identification 1.1
-    author:
-    - ins: J. Wunder
-      name: John Wunder
-    - ins: A. Halbardier
-      name: Adam Halbardier
-    - ins: D. Waltermire
-      name: David Waltermire
-    date: 2011
-    seriesinfo:
-      NIST Interagency Report 7693 
-  PXGRID:
-    title: An Actionable Threat Intelligence system using a Publish-Subscribe communications
-      model
-    author:
-    - ins: S. Appala
-      name: Syam Appala
-    - ins: N. Cam-Winget
-      name: Nancy Cam-Winget
-    - ins: D. McGrew
-      name: David McGrew
-    - ins: J. Verma
-      name: Jyoti Verma
-    seriesinfo:
-      ACM: Proceedings of the 2nd ACM Workshop on Information Sharing and Collaborative
-        Security
-      page: 61-70
-      DOI: 10.1145/2808128.2808131
-      ISBN: 978-1-4503-3822-6
-    date: 2016
  
 informative:
   RFC7632:

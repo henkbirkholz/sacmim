@@ -324,6 +324,9 @@ Categories are special IEs that enable to refer to multiple types of IE via just
 
 Another prominent example is EndpointIdentifier. Some IEs can be used to identify (and over time re-recognize) target endpoints - those are associated with the category endpoint-identifier.
 
+### Information Element Typing and Taxonomic Relationships
+When defining a new IE there are two approaches that can be taken. The first is to provide a specific datatype for the IE that binds the value of that IE to a specific lexical and value space. An example of this would be to define a timestamp IE that has a datatype of unsigned integer that represents the seconds since the UNIX epoch. The other approach is to use a category to define a taxnomic relationship that binds an IE to a set of other IEs that may have distinct lexical and value spaces. An example of this would be to define a timestamp category that contains a publication timestamp, observation timestamp, collection timestamp, storage timestamp, etc. each of which can have their own lexical and value space. Then, when the IE is used, the appropriate IE can be selected based on the data being represented.
+
 content:
 
 : This is a very broad category. Content is the payload of a content element in a SACM statement. Formally, metadata is the complement to content and everything that is not part of SACM statement metadata or content element metadata is therefore considered to be content. Every IE can be content (although the same type of IE can be used in the metadata at the same time - and those would not be content as described before). Annotating every IE with this category would be highly redundant and is therefore omitted for brevity.

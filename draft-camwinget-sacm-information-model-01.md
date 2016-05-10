@@ -236,7 +236,7 @@ sacm-statement = (
 
 ## Relationship Types
 
-An IE can be associated with another IE, e.g. a user-name attribute can be associated with a content-authorization subject. These references are expressed via the relationships subject, which can be included in a corresponding content-metadata subject. The relationships subject includes a list of one ore more references.
+An IE can be associated with another IE, e.g. a user-name attribute can be associated with a content-authorization subject. These references are expressed via the relationships subject, which can be included in a corresponding content-metadata subject. The relationships subject includes a list of one or more references.
 The SACM IM does not enforce a SACM domain to use unique identifiers as references. Therefore, there are at least two ways to reference another content-element:
 
 * the value of a reference represents a specific content-label that is unique in a SACM domain (and has to be included in the corresponding content-element metadata in order to be referenced), or
